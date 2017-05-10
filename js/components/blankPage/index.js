@@ -24,7 +24,7 @@ class BlankPage extends Component {
         <Header>
           <Left>
             <Button transparent onPress={() => Actions.pop()}>
-              <Icon name="ios-arrow-back" />
+              <Icon name="arrow-back" />
             </Button>
           </Left>
 
@@ -32,11 +32,6 @@ class BlankPage extends Component {
             <Title>{(name) ? this.props.name : 'Blank Page'}</Title>
           </Body>
 
-          <Right>
-            <Button transparent onPress={this.props.openDrawer}>
-              <Icon name="ios-menu" />
-            </Button>
-          </Right>
         </Header>
 
         <Content padder>
