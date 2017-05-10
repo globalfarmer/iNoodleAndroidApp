@@ -1,4 +1,4 @@
-package com.nativestarterkit;
+package com.inoodle;
 
 import android.app.Application;
 
