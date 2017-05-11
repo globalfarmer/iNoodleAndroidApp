@@ -1,37 +1,30 @@
 
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { Actions, ActionConst } from 'react-native-router-flux';
-import { Container, Content, Text, Button, Body } from 'native-base';
-import { Grid, Row } from 'react-native-easy-grid';
+import { WebView, View } from 'react-native';
 
-import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
 import { ANNOUNCE } from '../../actions/noodleboard';
 
 
 class AnnounceDetails extends Component {
-
-    static propTypes = {
-    name: React.PropTypes.string,
-    openDrawer: React.PropTypes.func,
-    }
-
     render() {
         return (
-            <Container style={styles.container}>
-                <Content>
-                    <Text>{this.props.name + "_DETAILS"}</Text>
-                </Content>
-            </Container>
-        );
+            <View style={{flex: 1}}>
+                <WebView
+                    source={{uri: this.props.link}}
+                    style={styles.webview}
+                    javaScriptEnabled={true}
+                    domStorageEnabled={true}
+                    startInLoadingState={true}
+                />
+            </View>
+        )
     }
 }
 
 const mapStateToProps = state => ({
-  name: state.noodleDetails.boardSource,
-  data: state.noodleDetails.data
+  link: ["http://", state.noodleDetails.data].join("")
 });
 
 export default connect(mapStateToProps)(AnnounceDetails);

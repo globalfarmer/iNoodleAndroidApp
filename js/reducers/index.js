@@ -8,7 +8,7 @@ import noodleDetails from './noodle_details'
 
 export default combineReducers({
   drawer,
+  noodleDetails,
   user,
   noodleboard,
-  noodleDetails
 });
