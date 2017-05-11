@@ -10,7 +10,7 @@ import { ANNOUNCE } from '../../actions/noodleboard';
 class AnnounceDetails extends Component {
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View>
                 <WebView
                     source={{uri: this.props.link}}
                     style={styles.webview}
