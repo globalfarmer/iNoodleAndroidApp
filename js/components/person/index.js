@@ -9,6 +9,7 @@ import { Grid, Row } from 'react-native-easy-grid';
 
 import { setUser } from '../../actions/user';
 import styles from './styles';
+import scenenames from '../../scenenames';
 
 const background = require('../../../images/shadow.png');
 
@@ -108,7 +109,7 @@ class Person extends Component {
                                         </Picker>
                                 </Item>
                                 <Item style={{flex: 1, flexDirection: 'row'}}>
-                                    <Button full style={styles.btn} onPress={() => Actions.home()} >
+                                    <Button full style={styles.btn} onPress={() => Actions[scenenames.noodleBoard]()} >
                                       <Text>Done</Text>
                                     </Button>
                                 </Item>
@@ -124,7 +125,7 @@ class Person extends Component {
 
 function bindActions(dispatch) {
   return {
-    setUser: name => dispatch(setUser(name)),
+    setUser: name => dispatch(setUser(name))
   };
 }
 

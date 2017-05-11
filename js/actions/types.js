@@ -1,4 +1,4 @@
-
+import { CHANGE_CONTENT_SCENE } from './content';
 export type Action =
   { type: 'PUSH_NEW_ROUTE', route: string }
     | { type: 'POP_ROUTE' }
@@ -9,6 +9,7 @@ export type Action =
     | { type: 'CLOSE_DRAWER'}
     | { type: 'SET_USER', name: string}
     | { type: 'SET_LIST', list: string}
+    | { type: CHANGE_CONTENT_SCENE}
 
 export type Dispatch = (action:Action | Array<Action>) => any;
 export type GetState = () => Object;

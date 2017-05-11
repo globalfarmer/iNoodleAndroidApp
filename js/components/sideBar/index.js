@@ -6,6 +6,13 @@ import { Actions } from 'react-native-router-flux';
 
 import { closeDrawer } from '../../actions/drawer';
 import { setIndex } from '../../actions/list';
+import {
+    changeContentScene,
+    ANNOUNCE,
+    SLOT,
+    FINAL_TEST,
+    SCOREBOARD
+} from '../../actions/noodleboard';
 
 import styles from './style';
 
@@ -24,11 +31,29 @@ class SideBar extends Component {
   render() {
     return (
       <Content style={styles.sidebar} >
-        <ListItem button onPress={() => { Actions.home(); this.props.closeDrawer(); }} >
-          <Text>Home</Text>
+        <ListItem button onPress={() => {
+            this.props.changeContentScene(ANNOUNCE);
+            this.props.closeDrawer();
+        }} >
+          <Text>Announce</Text>
         </ListItem>
-        <ListItem button onPress={() => { Actions.blankPage(); this.props.closeDrawer(); }} >
-          <Text>Blank Page</Text>
+        <ListItem button onPress={() => {
+            this.props.changeContentScene(SLOT);
+            this.props.closeDrawer();
+        }} >
+          <Text>Slot</Text>
+        </ListItem>
+        <ListItem button onPress={() => {
+            this.props.changeContentScene(FINAL_TEST);
+            this.props.closeDrawer();
+        }} >
+          <Text>Final Test</Text>
+        </ListItem>
+        <ListItem button onPress={() => {
+            this.props.changeContentScene(SCOREBOARD);
+            this.props.closeDrawer();
+        }} >
+          <Text>Scoreboard</Text>
         </ListItem>
       </Content>
     );
@@ -38,7 +63,7 @@ class SideBar extends Component {
 function bindAction(dispatch) {
   return {
     closeDrawer: () => dispatch(closeDrawer()),
-    setIndex: index => dispatch(setIndex(index)),
+    changeContentScene: contentType => dispatch(changeContentScene(contentType)),
   };
 }
 
