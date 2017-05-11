@@ -49,7 +49,7 @@ const mapStateToProps = state => ({
   name: state.noodleboard.currentContent,
   detailsData: {
       boardSource: state.noodleboard.currentContent,
-      data: state.noodleboard.data.scoreboard[0]
+      data: state.noodleboard.data.announce[0]
   }
 });
 

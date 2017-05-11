@@ -28,7 +28,7 @@ class AnnounceDetails extends Component {
         return (
           <Container style={styles.container}>
             <Content>
-              <Text>{this.props.data}</Text>
+              <Text>{this.props.name + "_DETAILS"}</Text>
             </Content>
           </Container>
         );
@@ -44,8 +44,8 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-  name: state.user.name,
-  data: state.noodleboard.currentContent === ANNOUNCE ? state.noodleboard.currentContent : undefined
+  name: state.noodleDetails.boardSource,
+  data: state.noodleDetails.data
 });
 
 export default connect(mapStateToProps, bindAction)(AnnounceDetails);

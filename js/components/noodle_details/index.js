@@ -10,16 +10,18 @@ import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
 
 import AnnounceDetails from './announce_details';
-// import Slot from './slot_details';
-// import FinalTest from './final_test_details';
-// import Scoreboard from './scoreboard_details';
+import SlotDetails from './slot_details';
+import FinalTestDetails from './final_test_details';
+import ScoreboardDetails from './scoreboard_details';
 
-import { ANNOUNCE, SLOT } from '../../actions/noodleboard';
+import { ANNOUNCE, SLOT, FINAL_TEST, SCOREBOARD } from '../../actions/noodleboard';
 
-// const containers= {
-//     SLOT: (<Slot/>),
-//     ANNOUNCE: (<Announce/>),
-// }
+const containers= {
+    SLOT: (<SlotDetails/>),
+    ANNOUNCE: (<AnnounceDetails/>),
+    FINAL_TEST: (<FinalTestDetails/>),
+    SCOREBOARD: (<ScoreboardDetails/>)
+}
 
 class NoodleDetails extends Component {
 
@@ -39,13 +41,13 @@ class NoodleDetails extends Component {
             </Left>
 
             <Body>
-              <Title>{(this.props.name || 'ANNOUNCE')+'_DETAILS'}</Title>
+              <Title>{this.props.name+'_DETAILS'}</Title>
             </Body>
 
           </Header>
 
           <Content padder>
-            <Text>{this.props.currentContent + "_DETAILS"}</Text>
+            {containers[this.props.currentContent]}
           </Content>
         </Container>
     );

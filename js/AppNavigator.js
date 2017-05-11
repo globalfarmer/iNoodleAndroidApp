@@ -49,12 +49,12 @@ class AppNavigator extends Component {
 
   _renderScene(props) { // eslint-disable-line class-methods-use-this
     switch (props.scene.route.key) {
-      case 'person':
+      case scenenames.person:
         return <Person />;
-      case 'home':
-        return <Home />;
-      case 'blankPage':
-        return <BlankPage />;
+      case scenenames.noodleBoard:
+        return <NoodleBoard />;
+      case scenenames.noodleDetails:
+        return <NoodeDetails />;
       default :
         return <Person />;
     }

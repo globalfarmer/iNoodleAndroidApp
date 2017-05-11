@@ -7,8 +7,10 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Righ
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
+import { viewDetails } from '../../actions/noodle_details';
 import styles from './styles';
 import { FINAL_TEST } from '../../actions/noodleboard';
+import scenenames from '../../scenenames';
 
 
 class FinalTest extends Component {
@@ -26,28 +28,31 @@ class FinalTest extends Component {
   }
 
   render() {
-      if( this.props.data ) {
         return (
           <Container style={styles.container}>
             <Content>
-              <Text>{this.props.data}</Text>
+                <Button transparent onPress={() => { this.props.viewDetails(this.props.detailsData); Actions[scenenames.noodleDetails]();}}>
+                  <Text>{this.props.name}</Text>
+                </Button>
             </Content>
           </Container>
         );
-      }
-      return (<Container/>);
-  }
+     }
 }
 
 function bindAction(dispatch) {
   return {
     openDrawer: () => dispatch(openDrawer()),
+    viewDetails: detailsData => dispatch(viewDetails(detailsData))
   };
 }
 
 const mapStateToProps = state => ({
-  name: state.user.name,
-  data: state.noodleboard.currentContent === FINAL_TEST ? state.noodleboard.currentContent : undefined
+  name: state.noodleboard.currentContent,
+  detailsData: {
+      boardSource: state.noodleboard.currentContent,
+      data: {}
+  }
 });
 
 export default connect(mapStateToProps, bindAction)(FinalTest);
