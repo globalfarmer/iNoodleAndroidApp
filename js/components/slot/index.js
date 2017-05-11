@@ -11,7 +11,7 @@ import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
 
 
-class Home extends Component {
+class Slot extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
@@ -47,18 +47,7 @@ class Home extends Component {
         </Header>
 
         <Content>
-          <Grid style={styles.mt}>
-            {this.props.list.map((item, i) =>
-              <Row key={i}>
-                <TouchableOpacity
-                  style={styles.row}
-                  onPress={() => this.newPage(i)}
-                >
-                  <Text style={styles.text}>{item}</Text>
-                </TouchableOpacity>
-              </Row>
-            )}
-          </Grid>
+          <Text>Slot</Text>
         </Content>
       </Container>
     );
@@ -67,14 +56,12 @@ class Home extends Component {
 
 function bindAction(dispatch) {
   return {
-    setIndex: index => dispatch(setIndex(index)),
     openDrawer: () => dispatch(openDrawer()),
   };
 }
 
 const mapStateToProps = state => ({
   name: state.user.name,
-  list: state.list.list,
 });
 
-export default connect(mapStateToProps, bindAction)(Home);
+export default connect(mapStateToProps, bindAction)(Slot);
