@@ -7,7 +7,6 @@ import list from './list';
 import noodleboard from './noodleboard';
 
 export default combineReducers({
-
   drawer,
   user,
   noodleboard
