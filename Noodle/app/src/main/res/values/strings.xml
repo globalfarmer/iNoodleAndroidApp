@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Noodle</string>
+    <string name="sign_up">Sign up for Noodle</string>
+    <string name="login">Log in</string>
+    <string name="input_user_name">Input User Name</string>
+    <string name="input_password">Input Password</string>
+    <string name="forgot_password">Forgot password?</string>
+</resources>
