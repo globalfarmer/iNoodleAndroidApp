@@ -8,8 +8,8 @@ import { Router, Scene } from 'react-native-router-flux';
 import { closeDrawer } from './actions/drawer';
 
 import Person from './components/person/';
-import Home from './components/home/';
 import NoodleBoard from './components/noodleboard/';
+import NoodleDetails from './components/noodle_details';
 import BlankPage from './components/blankPage';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
@@ -97,7 +97,7 @@ class AppNavigator extends Component {
           <Scene key={scenenames.root}>
             <Scene key={scenenames.person} component={Person} hideNavBar initial />
             <Scene key={scenenames.noodleBoard} component={NoodleBoard} />
-            <Scene key={scenenames.blankPage} component={BlankPage} />
+            <Scene key={scenenames.noodleDetails} component={NoodleDetails} />
           </Scene>
         </RouterWithRedux>
       </Drawer>

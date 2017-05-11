@@ -6,7 +6,6 @@ import { Actions, ActionConst } from 'react-native-router-flux';
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Right } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
-import { setIndex } from '../../actions/list';
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
 import { FINAL_TEST } from '../../actions/noodleboard';

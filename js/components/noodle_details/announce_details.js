@@ -8,15 +8,13 @@ import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
-import { SLOT } from '../../actions/noodleboard';
+import { ANNOUNCE } from '../../actions/noodleboard';
 
 
-class Slot extends Component {
+class AnnounceDetails extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
-    setIndex: React.PropTypes.func,
-    list: React.PropTypes.arrayOf(React.PropTypes.string),
     openDrawer: React.PropTypes.func,
   }
 
@@ -47,7 +45,7 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   name: state.user.name,
-  data: state.noodleboard.currentContent === SLOT ? state.noodleboard.currentContent : undefined
+  data: state.noodleboard.currentContent === ANNOUNCE ? state.noodleboard.currentContent : undefined
 });
 
-export default connect(mapStateToProps, bindAction)(Slot);
+export default connect(mapStateToProps, bindAction)(AnnounceDetails);
