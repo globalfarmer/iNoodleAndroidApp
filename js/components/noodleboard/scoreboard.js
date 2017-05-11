@@ -1,9 +1,8 @@
 
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
-import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import { Container, Header, Title, Content, Text, Card, CardItem, Body, Right} from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
@@ -20,14 +19,31 @@ class Scoreboard extends Component {
     openDrawer: React.PropTypes.func,
   }
 
+  getUploadTime = (uploadTime) => {
+      return `${uploadTime.toLocaleTimeString()}, ${uploadTime.getDate()}-${uploadTime.getMonth()+1}-${uploadTime.getFullYear()}`;
+  }
+
   render() {
         return (
           <Container style={styles.container}>
-            <Content>
-                <Button transparent onPress={() => { this.props.viewDetails(this.props.detailsData); Actions[scenenames.noodleDetails]();}}>
-                  <Text>{this.props.name}</Text>
-                </Button>
-            </Content>
+              <Content style={{margin: 10}}>
+                  {this.props.scoreboards.map( (sb, idx) => (
+                        <Card key={idx}>
+                            <CardItem cardBody onPress={() => { this.props.viewDetails(sb.link); Actions[scenenames.noodleDetails]()}}>
+                                <Body style={{flex: 1}}>
+                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
+                                        {sb.course.code}
+                                    </Text>
+                                </Body>
+                            </CardItem>
+                            <CardItem>
+                                <Right>
+                                    <Text note style={{fontSize: 16}}>{this.getUploadTime(new Date(sb.uploadTime))}</Text>
+                                </Right>
+                            </CardItem>
+                        </Card>
+                  ))}
+              </Content>
           </Container>
         );
   }
@@ -36,19 +52,12 @@ class Scoreboard extends Component {
 function bindAction(dispatch) {
   return {
     openDrawer: () => dispatch(openDrawer()),
-    viewDetails: detailsData => dispatch(viewDetails(detailsData))
+    viewDetails: link => dispatch(viewDetails({boardSource: SCOREBOARD, data: link}))
   };
 }
 
 const mapStateToProps = state => ({
-  name: state.noodleboard.currentContent,
-  detailsData: {
-      boardSource: state.noodleboard.currentContent,
-      detailsData: {
-          boardSource: state.noodleboard.currentContent,
-          data: state.noodleboard.data.scoreboard[0]
-      }
-  }
+    scoreboards: state.noodleboard.data.scoreboard
 });
 
 export default connect(mapStateToProps, bindAction)(Scoreboard);
