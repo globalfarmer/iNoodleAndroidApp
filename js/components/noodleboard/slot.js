@@ -16,8 +16,6 @@ class Slot extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
-    setIndex: React.PropTypes.func,
-    list: React.PropTypes.arrayOf(React.PropTypes.string),
     openDrawer: React.PropTypes.func,
   }
 

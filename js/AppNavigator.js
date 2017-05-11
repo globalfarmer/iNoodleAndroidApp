@@ -10,7 +10,6 @@ import { closeDrawer } from './actions/drawer';
 import Person from './components/person/';
 import NoodleBoard from './components/noodleboard/';
 import NoodleDetails from './components/noodle_details';
-import BlankPage from './components/blankPage';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
 import scenenames from './scenenames';

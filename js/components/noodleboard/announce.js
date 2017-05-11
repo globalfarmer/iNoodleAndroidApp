@@ -20,11 +20,6 @@ class Announce extends Component {
     openDrawer: React.PropTypes.func,
   }
 
-  newPage(index) {
-    this.props.setIndex(index);
-    Actions.blankPage();
-  }
-
   render() {
       return (
           <Container style={styles.container}>

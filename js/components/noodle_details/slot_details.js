@@ -3,44 +3,29 @@ import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
-import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import { Container, Content, Text, Button} from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
 import { SLOT } from '../../actions/noodleboard';
 
-
 class SlotDetails extends Component {
 
-  static propTypes = {
-    name: React.PropTypes.string,
-    openDrawer: React.PropTypes.func,
-  }
+    static propTypes = {
+        name: React.PropTypes.string,
+        openDrawer: React.PropTypes.func,
+    }
 
-  newPage(index) {
-    this.props.setIndex(index);
-    Actions.blankPage();
-  }
-
-  render() {
-      if( this.props.data ) {
+    render() {
         return (
-          <Container style={styles.container}>
-            <Content>
-              <Text>{this.props.name + "_DETAILS"}</Text>
-            </Content>
-          </Container>
+            <Container style={styles.container}>
+                <Content>
+                    <Text>{this.props.name + "_DETAILS"}</Text>
+                </Content>
+            </Container>
         );
-      }
-      return (<Container/>);
-  }
-}
-
-function bindAction(dispatch) {
-  return {
-    openDrawer: () => dispatch(openDrawer()),
-  };
+    }
 }
 
 const mapStateToProps = state => ({
@@ -48,4 +33,4 @@ const mapStateToProps = state => ({
   data: state.noodleDetails.data
 });
 
-export default connect(mapStateToProps, bindAction)(SlotDetails);
+export default connect(mapStateToProps)(SlotDetails);

@@ -14,7 +14,12 @@ import SlotDetails from './slot_details';
 import FinalTestDetails from './final_test_details';
 import ScoreboardDetails from './scoreboard_details';
 
-import { ANNOUNCE, SLOT, FINAL_TEST, SCOREBOARD } from '../../actions/noodleboard';
+import {
+    ANNOUNCE,
+    SLOT,
+    FINAL_TEST,
+    SCOREBOARD
+} from '../../actions/noodleboard';
 
 const containers= {
     SLOT: (<SlotDetails/>),
