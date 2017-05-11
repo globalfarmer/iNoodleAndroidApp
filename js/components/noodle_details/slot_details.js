@@ -2,11 +2,9 @@
 import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { Actions, ActionConst } from 'react-native-router-flux';
-import { Container, Content, Text, Button} from 'native-base';
+import { Container, Content, Text, Button, Card, CardItem, Body} from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
-import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
 import { SLOT } from '../../actions/noodleboard';
 
@@ -20,8 +18,28 @@ class SlotDetails extends Component {
     render() {
         return (
             <Container style={styles.container}>
-                <Content>
-                    <Text>{this.props.name + "_DETAILS"}</Text>
+                <Content style={{margin: 10}}>
+                  <Card>
+                      <CardItem cardBody>
+                          <Body style={{flex: 1}}>
+                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
+                                  {this.props.slot.course.code}
+                              </Text>
+                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
+                                  {this.props.slot.course.name}
+                              </Text>
+                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
+                                  {this.props.slot.course.group}
+                              </Text>
+                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
+                                  {this.props.slot.course.tc}
+                              </Text>
+                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
+                                  {this.props.slot.note}
+                              </Text>
+                          </Body>
+                      </CardItem>
+                  </Card>
                 </Content>
             </Container>
         );
@@ -29,8 +47,7 @@ class SlotDetails extends Component {
 }
 
 const mapStateToProps = state => ({
-  name: state.noodleDetails.boardSource,
-  data: state.noodleDetails.data
+    slot: state.noodleDetails.data
 });
 
 export default connect(mapStateToProps)(SlotDetails);

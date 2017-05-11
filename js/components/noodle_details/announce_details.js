@@ -10,15 +10,13 @@ import { ANNOUNCE } from '../../actions/noodleboard';
 class AnnounceDetails extends Component {
     render() {
         return (
-            <View style={{flex: 1}}>
-                <WebView
-                    source={{uri: this.props.link}}
-                    style={styles.webview}
-                    javaScriptEnabled={true}
-                    domStorageEnabled={true}
-                    startInLoadingState={true}
-                />
-            </View>
+            <WebView
+                source={{uri: this.props.link}}
+                style={styles.webview}
+                javaScriptEnabled={true}
+                domStorageEnabled={true}
+                startInLoadingState={true}
+            />
         )
     }
 }
