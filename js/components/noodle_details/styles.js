@@ -1,7 +1,11 @@
 
 const React = require('react-native');
 
-const { StyleSheet } = React;
+const { StyleSheet, Dimensions } = React;
+
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').width;
+
 export default {
   container: {
     backgroundColor: '#FBFAFA',
@@ -18,4 +22,8 @@ export default {
   mt: {
     marginTop: 18,
   },
+  webview: {
+      width: deviceWidth,
+      height: deviceHeight
+  }
 };
