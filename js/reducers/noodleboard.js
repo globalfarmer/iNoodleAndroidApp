@@ -57,7 +57,50 @@ const initialState = {
         "klass": "QH-2013-I/CQ-C-A-C"
       }
   }],
-      finaltest: {},
+      finaltest: [{
+      "_id": "590ab75d33f07438b8c60449",
+      "term": "2016-2017-1",
+      "seat": "2",
+      "time": "2017-01-05T14:00:00.000Z",
+      "sessionNo": "2",
+      "room": "301-G2",
+      "area": "Nhà G2",
+      "type": "Viết",
+      "updatedAt": "2017-05-04T15:00:58.311Z",
+      "course": {
+        "code": "INE10502",
+        "name": "Kinh tế vi mô",
+        "term": "2016-2017-1"
+      },
+      "student": {
+        "code": "13020752",
+        "fullname": "Đỗ Việt Anh",
+        "birthday": "2/5/1995",
+        "klass": "QH-2013-I/CQ-C-A-C"
+      }
+    },
+    {
+      "_id": "590ab75c33f07438b8c60445",
+      "term": "2016-2017-1",
+      "seat": "1",
+      "time": "2016-12-13T08:00:00.000Z",
+      "sessionNo": "1",
+      "room": "306-GĐ2",
+      "area": "Khu GĐ2",
+      "type": "Viết",
+      "updatedAt": "2017-05-04T15:00:58.202Z",
+      "course": {
+        "code": "ELT203511",
+        "name": "Tín hiệu và hệ thống",
+        "term": "2016-2017-1"
+      },
+      "student": {
+        "code": "13020752",
+        "fullname": "Đỗ Việt Anh",
+        "birthday": "2/5/1995",
+        "klass": "QH-2013-I/CQ-C-A-C"
+      }
+    }],
       scoreboard: [
           {
             "_id": "590b70a6a9829d34fd77e98b",
