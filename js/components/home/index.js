@@ -40,7 +40,7 @@ class Home extends Component {
           </Body>
 
           <Right>
-              <Button transparent onPress={() => Actions.login({ type: ActionConst.RESET })}>
+              <Button transparent onPress={() => Actions.person({ type: ActionConst.RESET })}>
                 <Icon active name="person" />
               </Button>
           </Right>
