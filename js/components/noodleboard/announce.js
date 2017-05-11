@@ -20,7 +20,7 @@ class Announce extends Component {
     openDrawer: React.PropTypes.func,
   }
   getUploadTime = (uploadTime) => {
-      return `${uploadTime.toLocaleTimeString()}, ${uploadTime.getDay()}-${uploadTime.getMonth()+1}-${uploadTime.getFullYear()}`;
+      return `${uploadTime.toLocaleTimeString()}, ${uploadTime.getDate()}-${uploadTime.getMonth()+1}-${uploadTime.getFullYear()}`;
   }
 
   render() {
@@ -29,9 +29,9 @@ class Announce extends Component {
               <Content style={{margin: 10}}>
                   {this.props.announces.map( (announce, idx) => (
                         <Card key={idx}>
-                            <CardItem cardBody>
+                            <CardItem cardBody onPress={() => { this.props.viewDetails(announce.link); Actions[scenenames.noodleDetails]()}}>
                                 <Body style={{flex: 1}}>
-                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}} onPress={() => { this.props.viewDetails(announce.link); Actions[scenenames.noodleDetails]()}}>
+                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
                                         {announce.name}
                                     </Text>
                                 </Body>
