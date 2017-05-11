@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions, ActionConst } from 'react-native-router-flux';
-import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Right } from 'native-base';
+import { Container, Content, Text, Body, Card, CardItem } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
@@ -22,11 +22,22 @@ class Slot extends Component {
   render() {
     return (
       <Container style={styles.container}>
-        <Content>
-            <Button transparent onPress={() => { this.props.viewDetails(this.props.detailsData); Actions[scenenames.noodleDetails]();}}>
-              <Text>{this.props.name}</Text>
-            </Button>
-        </Content>
+          <Content style={{margin: 10}}>
+              {this.props.slots.map( (slot, idx) => (
+                    <Card key={idx}>
+                        <CardItem cardBody onPress={() => { this.props.viewDetails(slot); Actions[scenenames.noodleDetails]()}}>
+                            <Body style={{flex: 1}}>
+                                <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
+                                    {slot.course.code}
+                                </Text>
+                                <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
+                                    {slot.course.name}
+                                </Text>
+                            </Body>
+                        </CardItem>
+                    </Card>
+              ))}
+          </Content>
       </Container>
     );
   }
@@ -35,16 +46,12 @@ class Slot extends Component {
 function bindAction(dispatch) {
   return {
     openDrawer: () => dispatch(openDrawer()),
-    viewDetails: detailsData => dispatch(viewDetails(detailsData))
+    viewDetails: slot => dispatch(viewDetails({boardSource: SLOT, data: slot}))
   };
 }
 
 const mapStateToProps = state => ({
-  name: state.noodleboard.currentContent,
-  detailsData: {
-      boardSource: state.noodleboard.currentContent,
-      data: state.noodleboard.data.slot[0]
-  }
+    slots: state.noodleboard.data.slot
 });
 
 export default connect(mapStateToProps, bindAction)(Slot);
