@@ -8,9 +8,8 @@ import { Router, Scene } from 'react-native-router-flux';
 import { closeDrawer } from './actions/drawer';
 
 import Person from './components/person/';
-import Home from './components/home/';
 import NoodleBoard from './components/noodleboard/';
-import BlankPage from './components/blankPage';
+import NoodleDetails from './components/noodle_details';
 import SideBar from './components/sideBar';
 import { statusBarColor } from './themes/base-theme';
 import scenenames from './scenenames';
@@ -49,12 +48,12 @@ class AppNavigator extends Component {
 
   _renderScene(props) { // eslint-disable-line class-methods-use-this
     switch (props.scene.route.key) {
-      case 'person':
+      case scenenames.person:
         return <Person />;
-      case 'home':
-        return <Home />;
-      case 'blankPage':
-        return <BlankPage />;
+      case scenenames.noodleBoard:
+        return <NoodleBoard />;
+      case scenenames.noodleDetails:
+        return <NoodeDetails />;
       default :
         return <Person />;
     }
@@ -97,7 +96,7 @@ class AppNavigator extends Component {
           <Scene key={scenenames.root}>
             <Scene key={scenenames.person} component={Person} hideNavBar initial />
             <Scene key={scenenames.noodleBoard} component={NoodleBoard} />
-            <Scene key={scenenames.blankPage} component={BlankPage} />
+            <Scene key={scenenames.noodleDetails} component={NoodleDetails} />
           </Scene>
         </RouterWithRedux>
       </Drawer>

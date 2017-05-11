@@ -5,7 +5,6 @@ import { Content, Text, ListItem } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 import { closeDrawer } from '../../actions/drawer';
-import { setIndex } from '../../actions/list';
 import {
     changeContentScene,
     ANNOUNCE,

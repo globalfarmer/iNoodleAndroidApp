@@ -6,49 +6,49 @@ import { Actions, ActionConst } from 'react-native-router-flux';
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Right } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
-import { setIndex } from '../../actions/list';
 import { openDrawer } from '../../actions/drawer';
+import { viewDetails } from '../../actions/noodle_details';
 import styles from './styles';
 import { SCOREBOARD } from '../../actions/noodleboard';
+import scenenames from '../../scenenames';
 
 
 class Scoreboard extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
-    setIndex: React.PropTypes.func,
-    list: React.PropTypes.arrayOf(React.PropTypes.string),
     openDrawer: React.PropTypes.func,
   }
 
-  newPage(index) {
-    this.props.setIndex(index);
-    Actions.blankPage();
-  }
-
   render() {
-      if( this.props.data ) {
         return (
           <Container style={styles.container}>
             <Content>
-              <Text>{this.props.data}</Text>
+                <Button transparent onPress={() => { this.props.viewDetails(this.props.detailsData); Actions[scenenames.noodleDetails]();}}>
+                  <Text>{this.props.name}</Text>
+                </Button>
             </Content>
           </Container>
         );
-      }
-      return (<Container/>);
   }
 }
 
 function bindAction(dispatch) {
   return {
     openDrawer: () => dispatch(openDrawer()),
+    viewDetails: detailsData => dispatch(viewDetails(detailsData))
   };
 }
 
 const mapStateToProps = state => ({
-  name: state.user.name,
-  data: state.noodleboard.currentContent === SCOREBOARD ? state.noodleboard.currentContent : undefined
+  name: state.noodleboard.currentContent,
+  detailsData: {
+      boardSource: state.noodleboard.currentContent,
+      detailsData: {
+          boardSource: state.noodleboard.currentContent,
+          data: state.noodleboard.data.scoreboard[0]
+      }
+  }
 });
 
 export default connect(mapStateToProps, bindAction)(Scoreboard);

@@ -6,7 +6,6 @@ import { Actions, ActionConst } from 'react-native-router-flux';
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Right } from 'native-base';
 import { Grid, Row } from 'react-native-easy-grid';
 
-import { setIndex } from '../../actions/list';
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
 
@@ -15,7 +14,7 @@ import Slot from './slot';
 import FinalTest from './finaltest';
 import Scoreboard from './scoreboard';
 
-import { ANNOUNCE, SLOT } from '../../actions/noodleboard';
+import { ANNOUNCE, SLOT, FINAL_TEST, SCOREBOARD } from '../../actions/noodleboard';
 
 const containers= {
     SLOT: (<Slot/>),
