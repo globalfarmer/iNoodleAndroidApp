@@ -13,14 +13,16 @@ import Announce from './announce';
 import Slot from './slot';
 import FinalTest from './finaltest';
 import Scoreboard from './scoreboard';
+import Game from './game';
 
-import { ANNOUNCE, SLOT, FINAL_TEST, SCOREBOARD } from '../../actions/noodleboard';
+import { ANNOUNCE, SLOT, FINAL_TEST, SCOREBOARD, GAME } from '../../actions/noodleboard';
 
 const containers= {
     SLOT: (<Slot/>),
     ANNOUNCE: (<Announce/>),
     FINAL_TEST: (<FinalTest/>),
-    SCOREBOARD: (<Scoreboard/>)
+    SCOREBOARD: (<Scoreboard/>),
+    GAME: (<Game/>)
 }
 
 class NoodleBoard extends Component {
