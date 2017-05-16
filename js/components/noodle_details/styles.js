@@ -10,6 +10,12 @@ export default {
   container: {
     backgroundColor: '#FBFAFA',
   },
+  downloadContainer: {
+      backgroundColor: '#FBFAFA',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flex: 1,
+  },
   row: {
     flex: 1,
     alignItems: 'center',
@@ -23,6 +29,10 @@ export default {
     marginTop: 18,
   },
   webview: {
+      width: deviceWidth,
+      height: deviceHeight
+  },
+  pdf: {
       width: deviceWidth,
       height: deviceHeight
   }

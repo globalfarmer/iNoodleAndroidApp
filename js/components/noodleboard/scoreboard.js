@@ -29,7 +29,7 @@ class Scoreboard extends Component {
               <Content style={{margin: 10}}>
                   {this.props.scoreboards.map( (sb, idx) => (
                         <Card key={idx}>
-                            <CardItem cardBody onPress={() => { this.props.viewDetails(sb.link); Actions[scenenames.noodleDetails]()}}>
+                            <CardItem cardBody onPress={() => { this.props.viewDetails(sb.file.filename); Actions[scenenames.noodleDetails]()}}>
                                 <Body style={{flex: 1}}>
                                     <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
                                         {sb.course.code}
