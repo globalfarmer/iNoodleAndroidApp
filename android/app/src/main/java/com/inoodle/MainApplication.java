@@ -3,11 +3,13 @@ package com.inoodle;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
 import com.microsoft.codepush.react.CodePush;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.keyee.pdfview.PDFView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,8 +31,10 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
+          new PDFView(),
           new MainReactPackage(),
-            new CodePush(null, getApplicationContext(), BuildConfig.DEBUG)
+            new RNFSPackage(),
+          new CodePush(null, getApplicationContext(), BuildConfig.DEBUG)
       );
     }
   };
