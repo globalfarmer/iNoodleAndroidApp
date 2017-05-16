@@ -6,6 +6,7 @@ export const ANNOUNCE = 'ANNOUNCE';
 export const SLOT = 'SLOT';
 export const FINAL_TEST = 'FINAL_TEST';
 export const SCOREBOARD = 'SCOREBOARD';
+export const GAME = 'GAME';
 
 export function changeContentScene(contentType:string):Action {
   return {

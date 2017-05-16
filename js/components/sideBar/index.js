@@ -10,7 +10,8 @@ import {
     ANNOUNCE,
     SLOT,
     FINAL_TEST,
-    SCOREBOARD
+    SCOREBOARD,
+    GAME
 } from '../../actions/noodleboard';
 
 import styles from './style';
@@ -53,6 +54,12 @@ class SideBar extends Component {
             this.props.closeDrawer();
         }} >
           <Text>Scoreboard</Text>
+        </ListItem>
+        <ListItem button onPress={() => {
+            this.props.changeContentScene(GAME);
+            this.props.closeDrawer();
+        }} >
+          <Text>Game</Text>
         </ListItem>
       </Content>
     );
