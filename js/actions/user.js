@@ -1,11 +1,12 @@
 
 import type { Action } from './types';
 
-export const SET_USER = 'SET_USER';
+export const SET_INFO = 'SET_INFO';
+export const ON_GET_INFO = 'ON_GET_INFO';
 
-export function setUser(user:string):Action {
-  return {
-    type: SET_USER,
-    payload: user,
-  };
+export function setInfo(info):Action {
+    return {
+        type: SET_INFO,
+        info: info
+    };
 }

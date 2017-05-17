@@ -7,9 +7,12 @@ import {View, Text, Picker, Card, CardItem, Thumbnail, Left, Right, Body, Title,
 import { Actions } from 'react-native-router-flux';
 import { Grid, Row } from 'react-native-easy-grid';
 
-import { setUser } from '../../actions/user';
+import { setInfo } from '../../actions/user';
 import styles from './styles';
 import scenenames from '../../scenenames';
+import { Values, Labels } from '../../resource';
+
+
 
 const background = require('../../../images/shadow.png');
 
@@ -22,23 +25,84 @@ class Person extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        name: '',
-        selectedItem: undefined,
-        defaultOne: 'HK II 2016-2017',
-        results: {
-            items: []
-        }
+        valid: !(this.props.student.code.length != 8 || isNaN(this.props.student.code)),
+        inputStyle: {},
+        code: this.props.student.code,
+        selectedOne: this.props.student.term || Values.person.term['2016-2017-1'],
+        isGettingInfo: false,
     };
   }
 
-  setUser(name) {
-    this.props.setUser(name);
+  setInfo(info) {
+    this.props.setInfo(info);
   }
 
     onValueChange (value: string) {
         this.setState({
-            selectedOne : value
+            selectedOne : value,
         });
+        this.props.setInfo({term: value});
+    }
+
+    validate(code) {
+        if( code.length != 8 || isNaN(code) ) {
+            this.setState({ inputStyle: styles.wrongCode });
+            this.setState({valid: false});
+            return false;
+        }
+        else {
+            this.setState({ inputStyle: styles.validCode });
+            this.setState({valid: true});
+            return false;
+        }
+        return false;
+    }
+
+    onChangeText(code: string) {
+        this.setState({code})
+        this.validate(code);
+    }
+
+    onDone() {
+        if( !this.state.isGettingInfo && this.state.valid ) {
+            this.setState({isGettingInfo: true})
+            var url = ['http://188.166.222.158:8080/student/', this.state.code].join('');
+            if( this.props.student.code != this.state.code) {
+                fetch( url, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json, text/plain, */*',
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(res=>res.json())
+                .then(res => {
+                    // console.log('res ------------------');
+                    // console.log(url);
+                    // console.log(res)
+                    if( res && res.code ) {
+                        this.props.setInfo(res);
+                        Actions[scenenames.noodleBoard]();
+                    }
+                    else {
+                        this.setState({ inputStyle: styles.wrongCode });
+                    }
+                    this.setState({isGettingInfo: false})
+                })
+                .catch((error) => {
+                    this.setState({isGettingInfo: false})
+                    console.error(error);
+                });
+            }
+            else {
+                Actions[scenenames.noodleBoard]();
+                this.setState({isGettingInfo: false})
+            }
+        }
+        else {
+            this.setState({ inputStyle: styles.wrongCode });
+        }
+
     }
 
 
@@ -47,7 +111,7 @@ class Person extends Component {
       <Container style={styles.container}>
           <Header>
              <Body>
-                <Title>Student Info</Title>
+                <Title>{Labels.person.title}</Title>
              </Body>
           </Header>
           <Content>
@@ -55,27 +119,28 @@ class Person extends Component {
                     <Card>
                         <CardItem>
                             <Grid>
-                                <Row style={{flex: 1, margin: 5}}>
+                                <Row style={{flex: 1, margin: 10}}>
                                     <Item>
-                                        <Text>Do Viet Anh</Text>
+                                        <Label>{Labels.person.info.fullname}</Label>
+                                        <Text>{this.props.student.fullname}</Text>
                                     </Item>
                                 </Row>
-                                <Row style={{flex: 1, margin: 5}}>
+                                <Row style={{flex: 1, margin: 10}}>
                                     <Item>
-                                        <Label>Truong</Label>
-                                        <Text>Dai hoc cong nghe</Text>
+                                        <Label>{Labels.person.info.school}</Label>
+                                        <Text>đại học Công Nghệ Hà Nội - VNU</Text>
                                     </Item>
                                 </Row>
-                                <Row style={{flex: 1, margin: 5}}>
+                                <Row style={{flex: 1, margin: 10}}>
                                     <Item>
-                                        <Label>Ngay Sinh</Label>
-                                        <Text>1/1/1996</Text>
+                                        <Label>{Labels.person.info.birthday}</Label>
+                                        <Text>{this.props.student.birthday}</Text>
                                     </Item>
                                 </Row>
-                                <Row style={{flex: 1, margin: 5}}>
+                                <Row style={{flex: 1, margin: 10}}>
                                     <Item>
-                                        <Label>Lop</Label>
-                                        <Text>K58CA</Text>
+                                        <Label>{Labels.person.info.klass}</Label>
+                                        <Text>{this.props.student.klass}</Text>
                                     </Item>
                                 </Row>
                             </Grid>
@@ -83,33 +148,23 @@ class Person extends Component {
 
                         <CardItem>
                             <Body>
-                                <Item style={styles.input}>
+                                <Item style={{...styles.input, ...this.state.inputStyle}}>
                                   <Icon active name="person" />
-                                  <Input placeholder='Student Code' onChangeText={name => this.setState({ name })} type='numberic'/>
+                                  <Input placeholder='Student Code' value={this.state.code} onChangeText={this.onChangeText.bind(this)} />
                                 </Item>
                                 <Item>
                                     <Icon name="alarm"/>
-                                    <Label>HK:</Label>
-                                    <Picker
-                                           supportedOrientations={['portrait','landscape']}
-                                           selectedValue={this.state.selectedOne}
-                                           onValueChange={this.onValueChange.bind(this)}
-                                           style={{flex: 0.15}}>
-                                           <Picker.Item label="1" value="hk1" />
-                                           <Picker.Item label="2" value="hk2" />
-                                      </Picker>
-                                     <Label>Năm học:</Label>
                                       <Picker
                                              supportedOrientations={['portrait','landscape']}
                                              selectedValue={this.state.selectedOne}
                                              onValueChange={this.onValueChange.bind(this)}
                                              style={{flex:0.35}}>
-                                             <Picker.Item label="2015-2016" value="2015-2016" />
-                                             <Picker.Item label="2016-2017" value="2016-2017" />
+                                             <Picker.Item label={Labels.person.term['2016-2017-1']} value={Values.person.term['2016-2017-1']} />
+                                             <Picker.Item label={Labels.person.term['2016-2017-2']} value={Values.person.term['2016-2017-2']} />
                                         </Picker>
                                 </Item>
                                 <Item style={{flex: 1, flexDirection: 'row'}}>
-                                    <Button full style={styles.btn} onPress={() => Actions[scenenames.noodleBoard]()} >
+                                    <Button full style={styles.btn} onPress={ this.onDone.bind(this) } >
                                       <Text>Done</Text>
                                     </Button>
                                 </Item>
@@ -125,9 +180,15 @@ class Person extends Component {
 
 function bindActions(dispatch) {
   return {
-    setUser: name => dispatch(setUser(name))
+    setInfo: info => dispatch(setInfo(info))
   };
 }
 
+function mapStateToProps(state) {
+    return {
+        student: state.user,
+    }
+}
 
-export default connect(null, bindActions)(Person);
+
+export default connect(mapStateToProps, bindActions)(Person);
