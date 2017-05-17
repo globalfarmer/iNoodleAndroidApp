@@ -114,31 +114,31 @@ class Person extends Component {
                 <Title>{Labels.person.title}</Title>
              </Body>
           </Header>
-          <Content>
+          <Content style={{flex: 1}}>
               <View style={styles.bg}>
-                    <Card>
+                    <Card style={{flex: 1}}>
                         <CardItem>
                             <Grid>
-                                <Row style={{flex: 1, margin: 10}}>
-                                    <Item>
+                                <Row style={{flex: 1, margin: 5}}>
+                                    <Item style={{flex: 1, margin: 5}}>
                                         <Label>{Labels.person.info.fullname}</Label>
                                         <Text>{this.props.student.fullname}</Text>
                                     </Item>
                                 </Row>
-                                <Row style={{flex: 1, margin: 10}}>
-                                    <Item>
+                                <Row style={{flex: 1, margin: 5}}>
+                                    <Item style={{flex: 1, margin: 5}}>
                                         <Label>{Labels.person.info.school}</Label>
                                         <Text>đại học Công Nghệ Hà Nội - VNU</Text>
                                     </Item>
                                 </Row>
-                                <Row style={{flex: 1, margin: 10}}>
-                                    <Item>
+                                <Row style={{flex: 1, margin: 5}}>
+                                    <Item style={{flex: 1, margin: 5}}>
                                         <Label>{Labels.person.info.birthday}</Label>
                                         <Text>{this.props.student.birthday}</Text>
                                     </Item>
                                 </Row>
-                                <Row style={{flex: 1, margin: 10}}>
-                                    <Item>
+                                <Row style={{flex: 1, margin: 5}}>
+                                    <Item style={{flex: 1, margin: 5}}>
                                         <Label>{Labels.person.info.klass}</Label>
                                         <Text>{this.props.student.klass}</Text>
                                     </Item>
@@ -146,29 +146,35 @@ class Person extends Component {
                             </Grid>
                         </CardItem>
 
-                        <CardItem>
-                            <Body>
-                                <Item style={{...styles.input, ...this.state.inputStyle}}>
-                                  <Icon active name="person" />
-                                  <Input placeholder='Student Code' value={this.state.code} onChangeText={this.onChangeText.bind(this)} />
-                                </Item>
-                                <Item>
-                                    <Icon name="alarm"/>
-                                      <Picker
-                                             supportedOrientations={['portrait','landscape']}
-                                             selectedValue={this.state.selectedOne}
-                                             onValueChange={this.onValueChange.bind(this)}
-                                             style={{flex:0.35}}>
-                                             <Picker.Item label={Labels.person.term['2016-2017-1']} value={Values.person.term['2016-2017-1']} />
-                                             <Picker.Item label={Labels.person.term['2016-2017-2']} value={Values.person.term['2016-2017-2']} />
-                                        </Picker>
-                                </Item>
-                                <Item style={{flex: 1, flexDirection: 'row'}}>
-                                    <Button full style={styles.btn} onPress={ this.onDone.bind(this) } >
-                                      <Text>Done</Text>
-                                    </Button>
-                                </Item>
-                            </Body>
+                        <CardItem style={{flex: 1}}>
+                                <Grid style={{flex: 1}}>
+                                    <Row style={{flex: 1}}>
+                                        <Item style={{...styles.input, ...this.state.inputStyle}}>
+                                          <Icon active name="person" />
+                                          <Input placeholder='Student Code' value={this.state.code} onChangeText={this.onChangeText.bind(this)} />
+                                        </Item>
+                                    </Row>
+                                    <Row style={{flex: 1}}>
+                                        <Item style={{flex: 1, marginBottom: 20}}>
+                                            <Icon name="alarm"/>
+                                              <Picker
+                                                     supportedOrientations={['portrait','landscape']}
+                                                     selectedValue={this.state.selectedOne}
+                                                     onValueChange={this.onValueChange.bind(this)}
+                                                     style={{flex:0.35}}>
+                                                     <Picker.Item label={Labels.person.term['2016-2017-1']} value={Values.person.term['2016-2017-1']} />
+                                                     <Picker.Item label={Labels.person.term['2016-2017-2']} value={Values.person.term['2016-2017-2']} />
+                                                </Picker>
+                                        </Item>
+                                    </Row>
+                                    <Row style={{flex: 1}}>
+                                        <Item style={{flex: 1, flexDirection: 'row', margin: 5, justifyContent:'center', borderWidth: 0}}>
+                                            <Button full style={styles.btn} onPress={ this.onDone.bind(this) } >
+                                              <Text>Done</Text>
+                                            </Button>
+                                        </Item>
+                                    </Row>
+                                </Grid>
                         </CardItem>
                    </Card>
                 </View>
