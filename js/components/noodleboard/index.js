@@ -7,7 +7,7 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Righ
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
-import { onGetData, getAnnounce, getSlot } from '../../actions/noodleboard';
+import { onGetData, getAnnounce, getSlot, getFinalTest } from '../../actions/noodleboard';
 
 import styles from './styles';
 
@@ -46,6 +46,11 @@ class NoodleBoard extends Component {
           this.props.student.term,
           (data) => {this.props.onGetData({slotData: data})}
       );
+      getFinalTest(
+          this.props.student.code,
+          this.props.student.term,
+          (data) => {this.props.onGetData({finaltestData: data})}
+      )
   }
 
   render() {

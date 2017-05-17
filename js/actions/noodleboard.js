@@ -64,8 +64,24 @@ export function getSlot(code, term, cb) {
     });
 }
 
-function getFinalTest() {
-
+export function getFinalTest(code, term, cb) {
+    fetch('http://188.166.222.158:8080/finaltest', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({code, term})
+    })
+    .then(res=>res.json())
+    .then(res => {
+        if( res ) {
+            cb(res)
+        }
+    })
+    .catch((error) => {
+        console.error(error);
+    });
 }
 
 function getScoreboard() {
