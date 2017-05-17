@@ -51,7 +51,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-    slots: state.noodleboard.data.slot
+    slots: state.noodleboard.slotData.slot || []
 });
 
 export default connect(mapStateToProps, bindAction)(Slot);

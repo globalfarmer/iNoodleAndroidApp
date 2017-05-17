@@ -64,7 +64,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-    finaltests: state.noodleboard.data.finaltest
+    finaltests: state.noodleboard.finaltestData.finaltest || []
 });
 
 export default connect(mapStateToProps, bindAction)(FinalTest);

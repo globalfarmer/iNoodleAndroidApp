@@ -7,6 +7,8 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Righ
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
+import { onGetData, getAnnounce } from '../../actions/noodleboard';
+
 import styles from './styles';
 
 import Announce from './announce';
@@ -34,10 +36,10 @@ class NoodleBoard extends Component {
     openDrawer: React.PropTypes.func,
   }
 
-  newPage(index) {
-    this.props.setIndex(index);
-    Actions.blankPage();
-}
+  constructor(props) {
+      super(props);
+      getAnnounce((data) => { this.props.onGetData({announceData: data}) });
+  }
 
   render() {
     return (
@@ -70,6 +72,7 @@ class NoodleBoard extends Component {
 function bindAction(dispatch) {
   return {
     openDrawer: () => dispatch(openDrawer()),
+    onGetData: data => dispatch(onGetData(data))
   };
 }
 
