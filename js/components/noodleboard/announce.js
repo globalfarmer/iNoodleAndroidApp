@@ -57,7 +57,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-  announces: state.noodleboard.data.announce
+  announces: state.noodleboard.announceData.announce || []
 });
 
 export default connect(mapStateToProps, bindAction)(Announce);

@@ -2,6 +2,8 @@
 import type { Action } from './types';
 
 export const CHANGE_CONTENT_SCENE = 'CHANGE_CONTENT_SCENE';
+export const ON_GET_DATA = "ON_GET_DATA";
+
 export const ANNOUNCE = 'ANNOUNCE';
 export const SLOT = 'SLOT';
 export const FINAL_TEST = 'FINAL_TEST';
@@ -15,6 +17,41 @@ export function changeContentScene(contentType:string):Action {
   };
 }
 
-export function getData() {
-    console.log('GET DATA------------------------------------');
+export function onGetData(data):Action {
+    return {
+        type: ON_GET_DATA,
+        payload: data
+    }
+}
+
+export function getAnnounce(cb):Action {
+    fetch('http://188.166.222.158:8080/announce', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({page: 1})
+    })
+    .then(res=>res.json())
+    .then(res => {
+        if( res ) {
+            cb(res)
+        }
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+}
+
+function getSlot() {
+
+}
+
+function getFinalTest() {
+
+}
+
+function getScoreboard() {
+
 }

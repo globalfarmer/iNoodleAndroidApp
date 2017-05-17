@@ -19,11 +19,10 @@ const initialState = {
 export default function (state:State = initialState, action:Action): State {
     switch (action.type) {
         case SET_INFO:
-            state = {
+            return {
                 ...state,
                 ...action.info
             }
-            if( state.code && state.term ) getData();
             break;
     }
   return state;
