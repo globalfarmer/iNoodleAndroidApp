@@ -119,7 +119,7 @@ class Tile extends React.Component {
 
     return (
       <Animated.View style={tileStyles}>
-        <Text style={textStyles}>{tile.value}</Text>
+        <Text style={textStyles}>{String(tile.value)}</Text>
       </Animated.View>
     );
   }
