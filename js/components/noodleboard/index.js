@@ -7,7 +7,7 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Righ
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
-import { onGetData, getAnnounce } from '../../actions/noodleboard';
+import { onGetData, getAnnounce, getSlot } from '../../actions/noodleboard';
 
 import styles from './styles';
 
@@ -18,6 +18,8 @@ import Scoreboard from './scoreboard';
 import Game from './game';
 
 import { ANNOUNCE, SLOT, FINAL_TEST, SCOREBOARD, GAME } from '../../actions/noodleboard';
+
+import { Labels } from '../../resource';
 
 const containers= {
     SLOT: (<Slot/>),
@@ -38,7 +40,12 @@ class NoodleBoard extends Component {
 
   constructor(props) {
       super(props);
-      getAnnounce((data) => { this.props.onGetData({announceData: data}) });
+      getAnnounce((data) => { this.props.onGetData({announceData: data})});
+      getSlot(
+          this.props.student.code,
+          this.props.student.term,
+          (data) => {this.props.onGetData({slotData: data})}
+      );
   }
 
   render() {
@@ -52,7 +59,7 @@ class NoodleBoard extends Component {
           </Left>
 
           <Body>
-            <Title>{(this.props.name) ? this.props.name : 'Home'}</Title>
+            <Title>{this.props.title}</Title>
           </Body>
 
           <Right>
@@ -77,7 +84,8 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-  name: state.noodleboard.currentContent,
+  title: Labels.noodleboard.title[state.noodleboard.currentContent],
+  student: state.user,
   currentContent: state.noodleboard.currentContent
 });
 
