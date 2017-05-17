@@ -11,6 +11,9 @@ export const Labels = {
             "2016-2017-1": "Học kỳ 1 năm học 2016-2017",
             "2016-2017-2": "Học kỳ 2 năm học 2016-2017",
         }
+    },
+    announce: {
+        noData: "Không có thông báo",
     }
 };
 
