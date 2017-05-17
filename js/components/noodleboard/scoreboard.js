@@ -57,7 +57,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-    scoreboards: state.noodleboard.data.scoreboard
+    scoreboards: state.noodleboard.scoreboardData.scoreboard || []
 });
 
 export default connect(mapStateToProps, bindAction)(Scoreboard);
