@@ -29,6 +29,9 @@ export const Labels = {
     finaltest: {
         noData: "Chưa có lịch thi"
     },
+    scoreboard: {
+        noData: "Chưa có kết quả"
+    },
     noodleboard: {
         title: {
             ANNOUNCE: "Thông báo sinh viên",
