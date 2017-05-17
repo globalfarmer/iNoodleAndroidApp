@@ -26,6 +26,9 @@ export const Labels = {
     slot: {
         noData: "Không có môn học nào",
     },
+    finaltest: {
+        noData: "Chưa có lịch thi"
+    },
     noodleboard: {
         title: {
             ANNOUNCE: "Thông báo sinh viên",

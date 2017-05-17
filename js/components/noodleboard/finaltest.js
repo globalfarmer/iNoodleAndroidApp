@@ -11,6 +11,7 @@ import styles from './styles';
 import { FINAL_TEST } from '../../actions/noodleboard';
 import scenenames from '../../scenenames';
 
+import { Labels } from '../../resource';
 
 class FinalTest extends Component {
 
@@ -27,7 +28,9 @@ class FinalTest extends Component {
         return (
           <Container style={styles.container}>
               <Content style={{margin: 10}}>
-                  {this.props.finaltests.map( (ft, idx) => (
+                  {(!this.props.finaltests || this.props.finaltests.length == 0) ?
+                      (<Text>{Labels.finaltest.noData}</Text>):
+                      (this.props.finaltests.map( (ft, idx) => (
                         <Card key={idx}>
                             <CardItem cardBody onPress={() => { this.props.viewDetails(ft); Actions[scenenames.noodleDetails]()}}>
                                 <Body style={{flex: 1}}>
@@ -49,7 +52,7 @@ class FinalTest extends Component {
                                 </Body>
                             </CardItem>
                         </Card>
-                  ))}
+                  )))}
               </Content>
           </Container>
         );
@@ -64,7 +67,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-    finaltests: state.noodleboard.finaltestData.finaltest || []
+    finaltests: state.noodleboard.finaltestData.final || []
 });
 
 export default connect(mapStateToProps, bindAction)(FinalTest);
