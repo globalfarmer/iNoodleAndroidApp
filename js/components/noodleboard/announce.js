@@ -11,6 +11,7 @@ import { viewDetails } from '../../actions/noodle_details';
 import styles from './styles';
 import { ANNOUNCE } from '../../actions/noodleboard';
 import scenenames from '../../scenenames';
+import { Labels } from '../../resource';
 
 
 class Announce extends Component {
@@ -27,22 +28,27 @@ class Announce extends Component {
       return (
           <Container style={styles.container}>
               <Content style={{margin: 10}}>
-                  {this.props.announces.map( (announce, idx) => (
-                        <Card key={idx}>
-                            <CardItem cardBody onPress={() => { this.props.viewDetails(announce.link); Actions[scenenames.noodleDetails]()}}>
-                                <Body style={{flex: 1}}>
-                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                        {announce.name}
-                                    </Text>
-                                </Body>
-                            </CardItem>
-                            <CardItem>
-                                <Right>
-                                    <Text note style={{fontSize: 16}}>{this.getUploadTime(new Date(announce.uploadtime))}</Text>
-                                </Right>
-                            </CardItem>
-                        </Card>
-                  ))}
+                  { (!this.props.announces || this.props.announces.length == 0) ?
+                      (<Text>{Labels.announce.noData}</Text>) :
+                    (
+                        this.props.announces.map( (announce, idx) => (
+                            <Card key={idx}>
+                                <CardItem cardBody onPress={() => { this.props.viewDetails(announce.link); Actions[scenenames.noodleDetails]()}}>
+                                    <Body style={{flex: 1}}>
+                                        <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
+                                            {announce.name}
+                                        </Text>
+                                    </Body>
+                                </CardItem>
+                                <CardItem>
+                                    <Right>
+                                        <Text note style={{fontSize: 16}}>{this.getUploadTime(new Date(announce.uploadtime))}</Text>
+                                    </Right>
+                                </CardItem>
+                            </Card>
+                         ))
+                     )
+                  }
               </Content>
           </Container>
         )
@@ -57,7 +63,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-  announces: state.noodleboard.data.announce
+  announces: state.noodleboard.announceData.announce || []
 });
 
 export default connect(mapStateToProps, bindAction)(Announce);

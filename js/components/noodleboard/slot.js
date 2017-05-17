@@ -12,6 +12,8 @@ import styles from './styles';
 import { SLOT } from '../../actions/noodleboard';
 import scenenames from '../../scenenames';
 
+import { Labels } from '../../resource';
+
 class Slot extends Component {
 
   static propTypes = {
@@ -23,7 +25,9 @@ class Slot extends Component {
     return (
       <Container style={styles.container}>
           <Content style={{margin: 10}}>
-              {this.props.slots.map( (slot, idx) => (
+              { (!this.props.slots || this.props.slots.length == 0) ?
+                  (<Text>{Labels.slot.noData}</Text>) :
+                  (this.props.slots.map( (slot, idx) => (
                     <Card key={idx}>
                         <CardItem cardBody onPress={() => { this.props.viewDetails(slot); Actions[scenenames.noodleDetails]()}}>
                             <Body style={{flex: 1}}>
@@ -36,7 +40,7 @@ class Slot extends Component {
                             </Body>
                         </CardItem>
                     </Card>
-              ))}
+              )))}
           </Content>
       </Container>
     );
@@ -51,7 +55,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-    slots: state.noodleboard.data.slot
+    slots: state.noodleboard.slotData.slot || []
 });
 
 export default connect(mapStateToProps, bindAction)(Slot);

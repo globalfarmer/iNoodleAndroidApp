@@ -11,6 +11,8 @@ import styles from './styles';
 import { SCOREBOARD } from '../../actions/noodleboard';
 import scenenames from '../../scenenames';
 
+import { Labels } from '../../resource';
+
 
 class Scoreboard extends Component {
 
@@ -27,12 +29,14 @@ class Scoreboard extends Component {
         return (
           <Container style={styles.container}>
               <Content style={{margin: 10}}>
-                  {this.props.scoreboards.map( (sb, idx) => (
+                  { (!(this.props.scoreboards) || this.props.scoreboards.length==0) ?
+                      (<Text>{Labels.scoreboard.noData}</Text>) :
+                      (this.props.scoreboards.map( (sb, idx) => (
                         <Card key={idx}>
                             <CardItem cardBody onPress={() => { this.props.viewDetails(sb.file.filename); Actions[scenenames.noodleDetails]()}}>
                                 <Body style={{flex: 1}}>
                                     <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                        {sb.course.code}
+                                        {sb.course.name ? [sb.course.name, sb.course.code].join(' - ') : sb.course.code}
                                     </Text>
                                 </Body>
                             </CardItem>
@@ -42,7 +46,7 @@ class Scoreboard extends Component {
                                 </Right>
                             </CardItem>
                         </Card>
-                  ))}
+                  )))}
               </Content>
           </Container>
         );
@@ -57,7 +61,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-    scoreboards: state.noodleboard.data.scoreboard
+    scoreboards: state.noodleboard.scoreboardData.scoreboard || []
 });
 
 export default connect(mapStateToProps, bindAction)(Scoreboard);

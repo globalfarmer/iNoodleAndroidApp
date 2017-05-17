@@ -7,6 +7,8 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Righ
 import { Grid, Row } from 'react-native-easy-grid';
 
 import { openDrawer } from '../../actions/drawer';
+import { onGetData, getAnnounce, getSlot, getFinalTest, getScoreboard } from '../../actions/noodleboard';
+
 import styles from './styles';
 
 import Announce from './announce';
@@ -16,6 +18,8 @@ import Scoreboard from './scoreboard';
 import Game from './game';
 
 import { ANNOUNCE, SLOT, FINAL_TEST, SCOREBOARD, GAME } from '../../actions/noodleboard';
+
+import { Labels } from '../../resource';
 
 const containers= {
     SLOT: (<Slot/>),
@@ -34,10 +38,25 @@ class NoodleBoard extends Component {
     openDrawer: React.PropTypes.func,
   }
 
-  newPage(index) {
-    this.props.setIndex(index);
-    Actions.blankPage();
-}
+  constructor(props) {
+      super(props);
+      getAnnounce((data) => { this.props.onGetData({announceData: data})});
+      getSlot(
+          this.props.student.code,
+          this.props.student.term,
+          (data) => {this.props.onGetData({slotData: data})}
+      );
+      getFinalTest(
+          this.props.student.code,
+          this.props.student.term,
+          (data) => {this.props.onGetData({finaltestData: data})}
+      )
+      getScoreboard(
+          this.props.student.code,
+          this.props.student.term,
+          (data) => {this.props.onGetData({scoreboardData: data})}
+      )
+  }
 
   render() {
     return (
@@ -50,7 +69,7 @@ class NoodleBoard extends Component {
           </Left>
 
           <Body>
-            <Title>{(this.props.name) ? this.props.name : 'Home'}</Title>
+            <Title>{this.props.title}</Title>
           </Body>
 
           <Right>
@@ -70,11 +89,13 @@ class NoodleBoard extends Component {
 function bindAction(dispatch) {
   return {
     openDrawer: () => dispatch(openDrawer()),
+    onGetData: data => dispatch(onGetData(data))
   };
 }
 
 const mapStateToProps = state => ({
-  name: state.noodleboard.currentContent,
+  title: Labels.noodleboard.title[state.noodleboard.currentContent],
+  student: state.user,
   currentContent: state.noodleboard.currentContent
 });
 

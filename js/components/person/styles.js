@@ -14,6 +14,12 @@ export default {
     right: 0,
     backgroundColor: '#FBFAFA',
   },
+  wrongCode: {
+      borderColor: '#ff0000'
+  },
+  validCode: {
+      borderColor: '#999999'
+  },
   shadow: {
     flex: 1,
     width: null,
