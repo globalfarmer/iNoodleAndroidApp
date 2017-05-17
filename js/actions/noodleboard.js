@@ -14,3 +14,7 @@ export function changeContentScene(contentType:string):Action {
     payload: contentType,
   };
 }
+
+export function getData() {
+    console.log('GET DATA------------------------------------');
+}
