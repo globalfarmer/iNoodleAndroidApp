@@ -29,25 +29,22 @@ class FinalTest extends Component {
           <Container style={styles.container}>
               <Content style={{margin: 10}}>
                   {(!this.props.finaltests || this.props.finaltests.length == 0) ?
-                      (<Text>{Labels.finaltest.noData}</Text>):
+                      (<Text style={styles.item}>{Labels.finaltest.noData}</Text>):
                       (this.props.finaltests.map( (ft, idx) => (
                         <Card key={idx}>
                             <CardItem cardBody onPress={() => { this.props.viewDetails(ft); Actions[scenenames.noodleDetails]()}}>
                                 <Body style={{flex: 1}}>
-                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                        {ft.course.code}
+                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5, ...styles.cardHeader}}>
+                                        {ft.course.name} - {ft.course.code.toUpperCase()}
                                     </Text>
-                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                        {ft.course.name}
+                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,...styles.item}}>
+                                        + {this.getStartTime(new Date(ft.time))}
                                     </Text>
-                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                        {this.getStartTime(new Date(ft.time))}
+                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,...styles.item}}>
+                                        + {ft.room}
                                     </Text>
-                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                        {ft.room}
-                                    </Text>
-                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                        {ft.area}
+                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,...styles.item}}>
+                                        + {ft.area}
                                     </Text>
                                 </Body>
                             </CardItem>

@@ -6,6 +6,7 @@ import { Grid, Row } from 'react-native-easy-grid';
 
 import styles from './styles';
 import { FINAL_TEST } from '../../actions/noodleboard';
+import { Labels } from '../../resource';
 
 
 class FinalTestDetails extends Component {
@@ -20,32 +21,29 @@ class FinalTestDetails extends Component {
                   <Card>
                       <CardItem cardBody>
                           <Body style={{flex: 1}}>
-                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                  {this.props.ft.course.code}
+                              <Text style={{...styles.cardHeader, marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5}}>
+                                  {this.props.ft.course.name} - {this.props.ft.course.code.toUpperCase()}
                               </Text>
-                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                  {this.props.ft.course.name}
+                              <Text style={{...styles.item, marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5}}>
+                                  + {this.getStartTime(new Date(this.props.ft.time))}
                               </Text>
-                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                  {this.getStartTime(new Date(this.props.ft.time))}
+                              <Text style={{...styles.item, marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5}}>
+                                  + So bao danh {this.props.ft.seat}
                               </Text>
-                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                  So bao danh {this.props.ft.seat}
+                              <Text style={{...styles.item, marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5}}>
+                                  + Ca thi {this.props.ft.sessionNo}
                               </Text>
-                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                  Ca thi {this.props.ft.sessionNo}
+                              <Text style={{...styles.item, marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5}}>
+                                  + {this.props.ft.room}
                               </Text>
-                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                  {this.props.ft.room}
+                              <Text style={{...styles.item, marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5}}>
+                                  + {this.props.ft.area}
                               </Text>
-                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                  {this.props.ft.area}
+                              <Text style={{...styles.item, marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5}}>
+                                  + {Labels.person.term[this.props.ft.term]}
                               </Text>
-                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                  {this.props.ft.term}
-                              </Text>
-                              <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                  {this.props.ft.type}
+                              <Text style={{...styles.item, marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5}}>
+                                  + {this.props.ft.type}
                               </Text>
                           </Body>
                       </CardItem>

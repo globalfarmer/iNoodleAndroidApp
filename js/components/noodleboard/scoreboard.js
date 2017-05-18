@@ -30,19 +30,19 @@ class Scoreboard extends Component {
           <Container style={styles.container}>
               <Content style={{margin: 10}}>
                   { (!(this.props.scoreboards) || this.props.scoreboards.length==0) ?
-                      (<Text>{Labels.scoreboard.noData}</Text>) :
+                      (<Text style={styles.item}>{Labels.scoreboard.noData}</Text>) :
                       (this.props.scoreboards.map( (sb, idx) => (
                         <Card key={idx}>
-                            <CardItem cardBody onPress={() => { this.props.viewDetails(sb.file.filename); Actions[scenenames.noodleDetails]()}}>
+                            <CardItem cardBody onPress={() => { this.props.viewDetails(sb); Actions[scenenames.noodleDetails]()}}>
                                 <Body style={{flex: 1}}>
-                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                        {sb.course.name ? [sb.course.name, sb.course.code].join(' - ') : sb.course.code}
+                                    <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5, ...styles.cardHeader}}>
+                                        {sb.course.name ? [sb.course.name, sb.course.code.toUpperCase()].join(' - ') : sb.course.code.toUpperCase()}
                                     </Text>
                                 </Body>
                             </CardItem>
                             <CardItem>
                                 <Right>
-                                    <Text note style={{fontSize: 16}}>{this.getUploadTime(new Date(sb.uploadTime))}</Text>
+                                    <Text note style={styles.footer}>{this.getUploadTime(new Date(sb.uploadTime))}</Text>
                                 </Right>
                             </CardItem>
                         </Card>
@@ -56,7 +56,7 @@ class Scoreboard extends Component {
 function bindAction(dispatch) {
   return {
     openDrawer: () => dispatch(openDrawer()),
-    viewDetails: link => dispatch(viewDetails({boardSource: SCOREBOARD, data: link}))
+    viewDetails: sb => dispatch(viewDetails({boardSource: SCOREBOARD, data: sb}))
   };
 }
 

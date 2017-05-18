@@ -66,7 +66,7 @@ class ScoreboardDetails extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  source: ['http://188.166.222.158:8080/scoreboard', state.noodleDetails.data].join('/'),
-  filename: state.noodleDetails.data
+  source: ['http://188.166.222.158:8080/scoreboard', state.noodleDetails.data.file.filename].join('/'),
+  filename: state.noodleDetails.data.file.filename
 });
 export default connect(mapStateToProps)(ScoreboardDetails);

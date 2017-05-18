@@ -10,7 +10,7 @@ export default {
 
 
   // Button
-  btnFontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue' : 'Roboto_medium',
+  btnFontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue' : 'Arial',
   btnDisabledBg: '#b5b5b5',
   btnDisabledClr: '#f1f1f1',
 
@@ -88,8 +88,8 @@ export default {
 
 
   // Font
-  fontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue' : 'Roboto',
-  fontSizeBase: 15,
+  fontFamily: (Platform.OS === 'ios') ? 'HelveticaNeue' : 'Arial',
+  fontSizeBase: 25,
 
   get fontSizeH1() {
     return this.fontSizeBase * 1.8;
@@ -128,12 +128,12 @@ export default {
 
   // Icon
   iconFamily: 'Ionicons',
-  iconFontSize: (Platform.OS === 'ios') ? 30 : 28,
+  iconFontSize: (Platform.OS === 'ios') ? 30 : 35,
   iconMargin: 7,
 
 
   // InputGroup
-  inputFontSize: 15,
+  inputFontSize: 25,
   inputBorderColor: '#D9D5DC',
   inputSuccessBorderColor: '#2b8339',
   inputErrorBorderColor: '#ed2f2f',
@@ -194,7 +194,7 @@ export default {
 
   // Tabs
   tabBgColor: '#F8F8F8',
-  tabFontSize: 15,
+  tabFontSize: 25,
   tabTextColor: '#fff',
 
 
@@ -204,8 +204,8 @@ export default {
 
 
   // Title
-  titleFontSize: (Platform.OS === 'ios') ? 17 : 19,
-  subTitleFontSize: (Platform.OS === 'ios') ? 12 : 14,
+  titleFontSize: (Platform.OS === 'ios') ? 20 : 28,
+  subTitleFontSize: (Platform.OS === 'ios') ? 18 : 24,
   subtitleColor: '#8e8e93',
 
 

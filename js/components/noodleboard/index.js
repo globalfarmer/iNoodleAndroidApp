@@ -62,19 +62,19 @@ class NoodleBoard extends Component {
     return (
       <Container style={styles.container}>
         <Header>
-          <Left>
+          <Left style={{flex: 0.15}}>
               <Button transparent onPress={this.props.openDrawer}>
-                <Icon active name="menu" />
+                <Icon active name="menu" style={{fontSize: 30}}/>
               </Button>
           </Left>
 
-          <Body>
-            <Title>{this.props.title}</Title>
+          <Body style={{flex: 0.7}}>
+            <Title style={styles.title}>{this.props.title}</Title>
           </Body>
 
-          <Right>
+          <Right style={{flex: 0.15}}>
               <Button transparent onPress={() => Actions.person({ type: ActionConst.RESET })}>
-                <Icon active name="person" />
+                <Icon active name="person" style={{fontSize: 25}}/>
               </Button>
           </Right>
         </Header>
