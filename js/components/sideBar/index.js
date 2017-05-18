@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Content, Text, ListItem } from 'native-base';
+import { Content, Text, ListItem, View } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 import { closeDrawer } from '../../actions/drawer';
@@ -31,7 +31,10 @@ class SideBar extends Component {
 
   render() {
     return (
-      <Content style={styles.sidebar} >
+      <Content style={{...styles.sidebar, backgroundColor: '#fefffc'}} >
+            <View style={{height: 100, flex: 1, borderColor: "#55635f", borderBottomWidth: 2}}>
+                <Text style={{position: 'absolute', bottom: 5, right: 15,flex: 1, fontSize: 30, fontWeight: 'bold'}}>iNoodle</Text>
+            </View>
         <ListItem button onPress={() => {
             this.props.changeContentScene(ANNOUNCE);
             this.props.closeDrawer();
