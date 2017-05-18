@@ -33,6 +33,13 @@ class Person extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+      this.setState( {
+          code: nextProps.student.code,
+          selectedOne: nextProps.student.term
+      })
+  }
+
   setInfo(info) {
     this.props.setInfo(info);
   }
