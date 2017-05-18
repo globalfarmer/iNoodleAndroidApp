@@ -75,14 +75,17 @@ class AppNavigator extends Component {
           drawer: {
             shadowColor: '#000000',
             shadowOpacity: 0.8,
-            shadowRadius: 3
+            shadowRadius: 3,
+            borderRightWidth: 1,
+            borderColor: '#dedee2'
           },
         }}
         tweenHandler={(ratio) => {  //eslint-disable-line
           return {
             drawer: { shadowRadius: ratio < 0.2 ? ratio * 5 * 5 : 5 },
             main: {
-              opacity: (2 - ratio) / 2,
+              opacity: 1.1 - ratio,
+              backgroundColor: '#000000'
             },
           };
         }}
