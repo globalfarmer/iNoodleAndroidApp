@@ -7,7 +7,7 @@ const deviceHeight = Dimensions.get('window').height;
 
 export default {
   container: {
-    position: 'absolute',
+      flex: 1,
     top: 0,
     bottom: 0,
     left: 0,
@@ -36,6 +36,7 @@ export default {
   },
   input: {
     marginBottom: 20,
+    flex: 1,
   },
   btn: {
     marginTop: 20,
