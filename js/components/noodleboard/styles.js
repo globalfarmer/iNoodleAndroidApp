@@ -1,10 +1,20 @@
 
 const React = require('react-native');
+import ReactNative, {
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
 
-const { StyleSheet } = React;
+
+const { Dimensions } = ReactNative;
+
+const deviceHeight = Dimensions.get('window').height;
+
 export default {
   container: {
     backgroundColor: '#FBFAFA',
+    height: deviceHeight - 100
   },
   row: {
     flex: 1,
