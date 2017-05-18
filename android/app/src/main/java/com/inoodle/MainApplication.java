@@ -33,7 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new PDFView(),
           new MainReactPackage(),
-          new CodePush("MsNAtupInq80clOITEGLa1G2BZF4EyRiJxVg7", getApplicationContext(), BuildConfig.DEBUG),
+          new CodePush("JEViAt4ynCNcy1_pV0z3cDa_I498EyRiJxVg7", getApplicationContext(), BuildConfig.DEBUG),
           new RNFSPackage()
       );
     }
