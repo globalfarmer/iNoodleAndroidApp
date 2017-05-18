@@ -35,18 +35,32 @@ class NoodleDetails extends Component {
     openDrawer: React.PropTypes.func,
   }
 
+  getTitle() {
+      switch (this.props.currentContent) {
+          case ANNOUNCE:
+              return this.props.data.name;
+          case SLOT:
+              return this.props.data.course.name;
+          case FINAL_TEST:
+              return this.props.data.course.name;
+          case SCOREBOARD:
+              return this.props.data.course.name;
+      }
+      return 'NONE';
+  }
+
   render() {
     return (
         <Container style={styles.container}>
           <Header>
-            <Left>
+            <Left style={{flex: 0.12}}>
               <Button transparent onPress={() => Actions.pop()}>
                 <Icon name="arrow-back" />
               </Button>
             </Left>
 
-            <Body>
-              <Title>{this.props.name+'_DETAILS'}</Title>
+            <Body style={{flex: 0.88}}>
+              <Title style={styles.title}>{this.getTitle()}</Title>
             </Body>
 
           </Header>
@@ -62,7 +76,8 @@ class NoodleDetails extends Component {
 
 const mapStateToProps = state => ({
   name: state.noodleboard.currentContent,
-  currentContent: state.noodleboard.currentContent
+  currentContent: state.noodleboard.currentContent,
+  data: state.noodleDetails.data
 });
 
 export default connect(mapStateToProps)(NoodleDetails);

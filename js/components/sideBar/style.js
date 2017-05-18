@@ -11,4 +11,8 @@ export default {
     paddingTop: 30,
     backgroundColor: '#fff',
   },
+  item: {
+      fontSize: 18,
+      fontFamily: 'Arial',
+  }
 };

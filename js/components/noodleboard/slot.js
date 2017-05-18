@@ -26,17 +26,15 @@ class Slot extends Component {
       <Container style={styles.container}>
           <Content style={{margin: 10}}>
               { (!this.props.slots || this.props.slots.length == 0) ?
-                  (<Text>{Labels.slot.noData}</Text>) :
+                  (<Text style={styles.item}>{Labels.slot.noData}</Text>) :
                   (this.props.slots.map( (slot, idx) => (
                     <Card key={idx}>
                         <CardItem cardBody onPress={() => { this.props.viewDetails(slot); Actions[scenenames.noodleDetails]()}}>
                             <Body style={{flex: 1}}>
-                                <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                    {slot.course.code}
+                                <Text style={{...styles.cardHeader, marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5}}>
+                                    {slot.course.name} - {slot.course.code.toUpperCase()}
                                 </Text>
-                                <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
-                                    {slot.course.name}
-                                </Text>
+
                             </Body>
                         </CardItem>
                     </Card>

@@ -8,10 +8,6 @@ const deviceHeight = Dimensions.get('window').height;
 export default {
   container: {
       flex: 1,
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
     backgroundColor: '#FBFAFA',
   },
   wrongCode: {
@@ -35,11 +31,19 @@ export default {
     bottom: 0,
   },
   input: {
-    marginBottom: 20,
+    marginBottom: 10,
     flex: 1,
   },
   btn: {
-    marginTop: 20,
+    marginTop: 10,
     alignSelf: 'center',
-  },
+    },
+    item: {
+        fontSize: 15,
+        fontFamily: 'Arial',
+    },
+    title: {
+        fontSize: 18,
+        fontFamily: 'Arial',
+    }
 };

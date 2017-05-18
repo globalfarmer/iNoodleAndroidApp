@@ -119,7 +119,7 @@ class Person extends Component {
       <Container style={styles.container}>
           <Header>
              <Body>
-                <Title>{Labels.person.title}</Title>
+                <Title style={styles.title}>{Labels.person.title}</Title>
              </Body>
           </Header>
           <Content style={{flex: 1}}>
@@ -127,28 +127,28 @@ class Person extends Component {
                     <Card style={{flex: 1}}>
                         <CardItem>
                             <Grid>
-                                <Row style={{flex: 1, margin: 5}}>
-                                    <Item style={{flex: 1, margin: 5}}>
-                                        <Label>{Labels.person.info.fullname}</Label>
-                                        <Text>{this.props.student.fullname}</Text>
+                                <Row style={{flex: 1}}>
+                                    <Item style={{flex: 1, marginBottom: 10}}>
+                                        <Label style={{...styles.item, flex: 0.3}}>{Labels.person.info.fullname}</Label>
+                                        <Text style={{...styles.item, flex: 0.7, textAlign: 'right'}}>{this.props.student.fullname}</Text>
                                     </Item>
                                 </Row>
-                                <Row style={{flex: 1, margin: 5}}>
-                                    <Item style={{flex: 1, margin: 5}}>
-                                        <Label>{Labels.person.info.school}</Label>
-                                        <Text>đại học Công Nghệ Hà Nội - VNU</Text>
+                                <Row style={{flex: 1}}>
+                                    <Item style={{flex: 1, marginBottom: 10}}>
+                                        <Label style={{...styles.item, flex: 0.3}}>{Labels.person.info.school}</Label>
+                                        <Text style={{...styles.item, flex: 0.7, textAlign: 'right'}}>đại học Công Nghệ Hà Nội - VNU</Text>
                                     </Item>
                                 </Row>
-                                <Row style={{flex: 1, margin: 5}}>
-                                    <Item style={{flex: 1, margin: 5}}>
-                                        <Label>{Labels.person.info.birthday}</Label>
-                                        <Text>{this.props.student.birthday}</Text>
+                                <Row style={{flex: 1}}>
+                                    <Item style={{flex: 1, marginBottom: 10}}>
+                                        <Label style={{...styles.item, flex: 0.3}}>{Labels.person.info.birthday}</Label>
+                                        <Text style={{...styles.item, flex: 0.7, textAlign: 'right'}}>{this.props.student.birthday}</Text>
                                     </Item>
                                 </Row>
-                                <Row style={{flex: 1, margin: 5}}>
-                                    <Item style={{flex: 1, margin: 5}}>
-                                        <Label>{Labels.person.info.klass}</Label>
-                                        <Text>{this.props.student.klass}</Text>
+                                <Row style={{flex: 1}}>
+                                    <Item style={{flex: 1, marginBottom: 10}}>
+                                        <Label style={{...styles.item, flex: 0.3}}>{Labels.person.info.klass}</Label>
+                                        <Text style={{...styles.item, flex: 0.7, textAlign: 'right'}}>{this.props.student.klass}</Text>
                                     </Item>
                                 </Row>
                             </Grid>
@@ -159,26 +159,26 @@ class Person extends Component {
                                     <Row style={{flex: 1}}>
                                         <Item style={{...styles.input, ...this.state.inputStyle}}>
                                           <Icon active name="person" />
-                                          <Input placeholder='Student Code' value={this.state.code} onChangeText={this.onChangeText.bind(this)} />
+                                          <Input style={styles.item}placeholder={Labels.person.info.code} value={this.state.code} onChangeText={this.onChangeText.bind(this)} />
                                         </Item>
                                     </Row>
                                     <Row style={{flex: 1}}>
-                                        <Item style={{flex: 1, marginBottom: 20}}>
+                                        <Item style={{flex: 1, marginBottom: 10}}>
                                             <Icon name="alarm"/>
                                               <Picker
                                                      supportedOrientations={['portrait','landscape']}
                                                      selectedValue={this.state.selectedOne}
                                                      onValueChange={this.onValueChange.bind(this)}
                                                      style={{flex:0.35}}>
-                                                     <Picker.Item label={Labels.person.term['2016-2017-1']} value={Values.person.term['2016-2017-1']} />
-                                                     <Picker.Item label={Labels.person.term['2016-2017-2']} value={Values.person.term['2016-2017-2']} />
+                                                     <Picker.Item style={styles.item} label={Labels.person.term['2016-2017-1']} value={Values.person.term['2016-2017-1']} />
+                                                     <Picker.Item style={styles.item} label={Labels.person.term['2016-2017-2']} value={Values.person.term['2016-2017-2']} />
                                                 </Picker>
                                         </Item>
                                     </Row>
                                     <Row style={{flex: 1}}>
-                                        <Item style={{flex: 1, flexDirection: 'row', margin: 5, justifyContent:'center', borderWidth: 0}}>
+                                        <Item style={{flex: 1, flexDirection: 'row', justifyContent:'center', borderWidth: 0}}>
                                             <Button full style={styles.btn} onPress={ this.onDone.bind(this) } >
-                                              <Text>Done</Text>
+                                              <Text style={styles.item}>{Labels.person.info.done}</Text>
                                             </Button>
                                         </Item>
                                     </Row>

@@ -13,6 +13,7 @@ import {
     SCOREBOARD,
     GAME
 } from '../../actions/noodleboard';
+import { Labels } from '../../resource';
 
 import styles from './style';
 
@@ -35,31 +36,31 @@ class SideBar extends Component {
             this.props.changeContentScene(ANNOUNCE);
             this.props.closeDrawer();
         }} >
-          <Text>Announce</Text>
+          <Text style={styles.item}>{Labels.noodleboard.title[ANNOUNCE]}</Text>
         </ListItem>
         <ListItem button onPress={() => {
             this.props.changeContentScene(SLOT);
             this.props.closeDrawer();
         }} >
-          <Text>Slot</Text>
+          <Text style={styles.item}>{Labels.noodleboard.title[SLOT]}</Text>
         </ListItem>
         <ListItem button onPress={() => {
             this.props.changeContentScene(FINAL_TEST);
             this.props.closeDrawer();
         }} >
-          <Text>Final Test</Text>
+          <Text style={styles.item}>{Labels.noodleboard.title[FINAL_TEST]}</Text>
         </ListItem>
         <ListItem button onPress={() => {
             this.props.changeContentScene(SCOREBOARD);
             this.props.closeDrawer();
         }} >
-          <Text>Scoreboard</Text>
+          <Text style={styles.item}>{Labels.noodleboard.title[SCOREBOARD]}</Text>
         </ListItem>
         <ListItem button onPress={() => {
             this.props.changeContentScene(GAME);
             this.props.closeDrawer();
         }} >
-          <Text>Game</Text>
+          <Text style={styles.item}>{Labels.noodleboard.title[GAME]}</Text>
         </ListItem>
       </Content>
     );
