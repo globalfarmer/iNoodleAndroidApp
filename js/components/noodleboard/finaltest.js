@@ -67,7 +67,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-    finaltests: state.noodleboard.finaltestData.final || []
+    finaltests: (state.noodleboard.finaltestData.final || []).sort((e1, e2) => (new Date(e1.time)) - (new Date(e2.time))),
 });
 
 export default connect(mapStateToProps, bindAction)(FinalTest);
