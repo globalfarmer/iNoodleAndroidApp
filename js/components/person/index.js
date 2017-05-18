@@ -38,6 +38,7 @@ class Person extends Component {
           code: nextProps.student.code,
           selectedOne: nextProps.student.term
       })
+      this.validate(nextProps.student.code);
   }
 
   setInfo(info) {
