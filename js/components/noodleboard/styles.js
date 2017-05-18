@@ -28,4 +28,20 @@ export default {
   mt: {
     marginTop: 18,
   },
+  item: {
+      fontSize: 15,
+      fontFamily: 'Arial',
+  },
+  title: {
+      fontSize: 18,
+      fontFamily: 'Arial',
+  },
+  cardHeader: {
+      fontSize: 17,
+      fontFamily: 'Arial',
+  },
+  footer: {
+      fontSize: 16,
+      fontFamily: 'Arial',
+  }
 };

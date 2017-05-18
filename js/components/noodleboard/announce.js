@@ -29,20 +29,20 @@ class Announce extends Component {
           <Container style={styles.container}>
               <Content style={{margin: 10}}>
                   { (!this.props.announces || this.props.announces.length == 0) ?
-                      (<Text>{Labels.announce.noData}</Text>) :
+                      (<Text style={styles.item}>{Labels.announce.noData}</Text>) :
                     (
                         this.props.announces.map( (announce, idx) => (
                             <Card key={idx}>
-                                <CardItem cardBody onPress={() => { this.props.viewDetails(announce.link); Actions[scenenames.noodleDetails]()}}>
+                                <CardItem cardBody onPress={() => { this.props.viewDetails(announce); Actions[scenenames.noodleDetails]()}}>
                                     <Body style={{flex: 1}}>
-                                        <Text style={{marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
+                                        <Text style={{...styles.item, marginLeft: 10, marginTop: 5, marginRight: 5, marginBottom: 5,fontSize: 18}}>
                                             {announce.name}
                                         </Text>
                                     </Body>
                                 </CardItem>
                                 <CardItem>
                                     <Right>
-                                        <Text note style={{fontSize: 16}}>{this.getUploadTime(new Date(announce.uploadtime))}</Text>
+                                        <Text note style={styles.footer}>{this.getUploadTime(new Date(announce.uploadtime))}</Text>
                                     </Right>
                                 </CardItem>
                             </Card>
@@ -58,7 +58,7 @@ class Announce extends Component {
 function bindAction(dispatch) {
   return {
     openDrawer: () => dispatch(openDrawer()),
-    viewDetails: (link) => dispatch(viewDetails({boardSource: ANNOUNCE, data: link}))
+    viewDetails: (data) => dispatch(viewDetails({boardSource: ANNOUNCE, data: data}))
   }
 }
 

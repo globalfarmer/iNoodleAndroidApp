@@ -22,7 +22,7 @@ class AnnounceDetails extends Component {
 }
 
 const mapStateToProps = state => ({
-  link: ["http://", state.noodleDetails.data].join("")
+  link: ["http://", state.noodleDetails.data.link].join("")
 });
 
 export default connect(mapStateToProps)(AnnounceDetails);

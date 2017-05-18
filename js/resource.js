@@ -13,12 +13,14 @@ export const Labels = {
             fullname: "Họ & tên",
             school: "Trường",
             birthday: "Ngày sinh",
-            klass: "Lớp"
+            klass: "Lớp",
+            code: "Mã sinh viên",
+            done: "Xong"
         },
         term: {
             "2016-2017-1": "Học kỳ 1 năm học 2016-2017",
             "2016-2017-2": "Học kỳ 2 năm học 2016-2017",
-        }
+        },
     },
     announce: {
         noData: "Không có thông báo",
@@ -38,7 +40,7 @@ export const Labels = {
             SLOT: "Môn học trong kỳ",
             FINAL_TEST: "Lịch thi",
             SCOREBOARD: "Bảng điểm",
-            GAME: '2048'
+            GAME: 'Mini game'
         },
     }
 };
