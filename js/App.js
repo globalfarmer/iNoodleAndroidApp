@@ -11,8 +11,6 @@ import ProgressBar from './components/loaders/ProgressBar';
 
 import theme from './themes/base-theme';
 
-import codePush from "react-native-code-push";
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -125,4 +123,3 @@ class App extends Component {
 }
 
 export default App;
-App = codePush(App);
